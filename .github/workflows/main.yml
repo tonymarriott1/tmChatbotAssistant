@@ -18,7 +18,7 @@ jobs:
         run: |
           composer global require squizlabs/php_codesniffer
           git clone https://github.com/WordPress/WordPress-Coding-Standards.git ~/wpcs
-          echo "::add-path::${HOME}/.composer/vendor/bin"
+          echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
           phpcs --config-set installed_paths ~/wpcs
           phpcs --config-set default_standard WordPress
 
