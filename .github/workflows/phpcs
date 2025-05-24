@@ -1,0 +1,17 @@
+name: WordPress PHPCS
+
+on: [push, pull_request]
+
+jobs:
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run PHPCS
+        uses: php-actions/phpcs@v1
+        with:
+          php_version: '8.1'
+          path: './'
+          standard: 'WordPress'
