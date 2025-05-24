@@ -3,7 +3,37 @@ name: WordPress PHPCS
 on: [push, pull_request]
 
 jobs:
+  phpcs:name: WordPress PHPCS
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
   phpcs:
+    name: WordPress Coding Standards Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout plugin code
+        uses: actions/checkout@v3
+
+      - name: Install PHP and Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install PHP_CodeSniffer and WordPress Coding Standards
+        run: |
+          composer global require squizlabs/php_codesniffer
+          git clone -b master https://github.com/WordPress/WordPress-Coding-Standards.git ~/wpcs
+          ~/.composer/vendor/bin/phpcs --config-set installed_paths ~/wpcs
+          echo "$HOME/.composer/vendor/bin" >> $GITHUB_PATH
+
+      - name: Run PHPCS with WordPress Standard
+        run: phpcs ./ --standard=WordPress
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
