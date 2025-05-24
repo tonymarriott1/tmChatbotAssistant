@@ -1,0 +1,274 @@
+#tm-chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height:auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999 !important; /* Ensures chatbot is on top */
+}
+
+#tm-chatbot-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background: #0073aa;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#tm-chatbot-messages {
+    max-height: 300px;
+    height: 300px; /* Add this */
+    overflow-y: auto;
+    padding: 10px;
+    display: block; /* Change from flex */
+    padding-top: 100px;
+}
+
+/* General message styling */
+.chatbot-message {
+    max-width: 75%;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+/* Style for user messages (aligned right but not fully) */
+.chatbot-message.user {
+    background: #0073aa;
+    color: white;
+    width: 80%; /* Limit width to 80% */
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 10px;
+    align-self: flex-end;
+    text-align: left; /* Ensure text stays aligned left */
+}
+
+/* Style for AI messages (aligned left) */
+.chatbot-message.ai {
+    background: #f1f1f1;
+    max-width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 10px;
+    align-self: flex-start;
+    text-align: left;
+}
+
+/* Style for error messages */
+.chatbot-message.error {
+    color: red;
+}
+/* Chatbox Input Container */
+#tm-chatbot-input-container {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+
+/* Chat Input Field */
+#tm-chatbot-input {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px; /* Rounded on left */
+    outline: none;
+}
+
+/* Send Button */
+#tm-chatbot-send {
+    padding: 8px 15px;
+    font-size: 14px;
+    background-color: #0073aa;
+    color: white;
+    border: 1px solid #0073aa;
+    border-left: none;
+    border-radius: 0 5px 5px 0; /* Rounded on right */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#tm-chatbot-send:hover {
+    background-color: #005d87;
+}
+
+#tm-chatbot-loader {
+    text-align: center;
+    font-size: 14px;
+    color: #0073aa;
+    padding: 5px;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Hide chatbox by default */
+#tm-chatbot-container {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Floating assistant avatar */
+#tm-chatbot-avatar-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+#tm-chatbot-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+#tm-chatbot-writing{
+	width: 70px;
+    height: 70px;
+}
+
+#tm-chatbot-name{
+	display: inline-block;
+	max-width: 30px;
+	height: 60px;
+	line-height: 1.2;
+	vertical-align: top;
+}
+
+/* Chatbox header with close button */
+#tm-chatbot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right:2px;
+    background: #0073aa;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+/* Chatbox header avatar */
+#tm-chatbot-header-avatar {
+    width: 60px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 2px;
+}
+/* Ensure the title and avatar are aligned */
+#tm-chatbot-header span {
+    flex-grow: 1;
+    text-align: left;
+}
+
+/* Full-screen chatbox style */
+#tm-chatbot-container.fullscreen {
+    width: 100vw;
+    height: 95vh;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+}
+
+/* Position the buttons properly */
+.tm-chatbot-buttons {
+    //display: flex;
+    //gap: 3px;
+}
+
+#tm-chatbot-fullscreen, #tm-chatbot-close,#tm-chatbot-new-conversation {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+#tm-chatbot-fullscreen:hover, #tm-chatbot-close:hover, #tm-chatbot-new-conversation:hover {
+    opacity: 0.8;
+}
+
+#tm-chatbot-new-conversation {
+font-size: 25px;	
+}
+#tm-chatbot-close{
+	font-size: 18px;
+}
+
+:root {
+    --chatbot-bg-color: #0073aa; /* Default */
+    --chatbot-text-color: #ffffff; /* Default */
+}
+
+/* Apply colors to title header, send button, and default question button */
+#tm-chatbot-header {
+    background-color: var(--chatbot-bg-color);
+    color: var(--chatbot-text-color);
+}
+
+/* Default styles for send button and default question button */
+#tm-chatbot-send, .tm-chatbot-default-button {
+    background-color: var(--chatbot-bg-color);
+    color: var(--chatbot-text-color);
+    border: 1px solid var(--chatbot-bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Ensure text color remains unchanged while subtly lightening the background */
+#tm-chatbot-send:hover, .tm-chatbot-default-button:hover {
+    background-color: rgba(var(--chatbot-bg-color-rgb), 0.8);
+    color: var(--chatbot-text-color); /* Keep text color consistent */
+}
+
+.chatbot-link {
+    color: #0073aa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.chatbot-link:hover {
+    text-decoration: underline;
+}
+
+.chatbot-link-icon {
+    margin-left: 5px;
+    color: #0073aa;
+    font-size: 14px;
+}
+#chatbot-title {
+	color:ffffff !important;
+	font-size: 1px !important;
+}
+
+
+
